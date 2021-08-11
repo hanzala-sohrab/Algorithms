@@ -1,9 +1,5 @@
-#include <iostream>
-#include <vector>
-
-using std::cin;
-using std::cout;
-using std::vector;
+#include <bits/stdc++.h>
+using namespace std;
 
 int n;
 vector<int> arr;
@@ -31,10 +27,11 @@ int count() {
                 t[i][j] = t[i - 1][j - arr[i]] || t[i - 1][j];
             else
                 t[i][j] = t[i - 1][j];
+    int ans = INT_MAX;
     for (i = sum / 2; i < sum; ++i)
         if (t[n][i])
-            return sum - 2 * i;
-    return 0;
+            ans = min(ans, sum - 2 * i);
+    return ans;
 }
 
 int main() {
